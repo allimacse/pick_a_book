@@ -1,0 +1,94 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/iron-icons/iron-icons.html">
+<link rel="import" href="../../bower_components/iron-icon/iron-icon.html">
+<link rel="import" href="../../bower_components/iron-form/iron-form.html">
+
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="my-login">
+  <template>
+
+    <style include="shared-styles">
+    :host {
+      display: block;
+
+      padding: 10px;
+    }
+  </style>
+  <style>
+  :host {
+    display: block;
+    text-align: center;
+  }
+  paper-card{
+    text-align: left;
+    width: 400px;
+    padding: 1em;
+  }
+  paper-card .card-actions{
+    padding-top: 1em;
+    text-align: right;
+  }
+  paper-card .card-header{
+    font-size: 2em;
+    color: var(--paper-grey-700);
+  }
+  paper-card .card-header iron-icon{
+    height: 2em;
+    width: 2em;
+    color: var(--paper-blue-100);
+  }
+  paper-button{
+    color: var(--paper-red-300);
+  }
+  paper-button[raised]{
+    background-color: var(--primary-color);
+    color: white;
+  }
+</style>
+
+
+
+<paper-card  elevation="3" animated-shadow="false">  
+  <div class="card-header">
+
+    <iron-icon  icon="account-circle"></iron-icon>
+    Crear Cuenta
+  </div>
+  <form is="iron-form" id="form">
+    <div class="card-content">     
+      <paper-input label="Email" required type="email"></paper-input>
+      <paper-input label="Contraseña" required type="password"></paper-input>
+    </div>
+    <div class="card-actions">
+      <paper-button raised id="login">Enviar</paper-button>   
+      <paper-button>Cancelar</paper-button>
+    </div>
+  </form>
+</paper-card>
+
+</template>
+
+<script>
+  /**
+     * @customElement
+     * @polymer
+     */
+     class MyLogin extends Polymer.Element {
+      static get is() { return 'my-login'; }
+      ready() {
+        super.ready();
+        this.$.login.addEventListener("click",()=> {
+          this.$.form.submit();
+          confirm("Alan");
+        });
+      }
+    }
+
+    window.customElements.define(MyLogin.is, MyLogin);
+
+  </script>
+</dom-module>
